@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome to News Scraper{% endblock %}
+
+{% block content %}
+    <h1>Welcome to News Scraper</h1>
+    <p>This is the home page of our news scraping application.</p>
+    <ul>
+        <li><a href="{{ url_for('admin.index') }}">Admin Dashboard</a></li>
+        <li><a href="{{ url_for('api.get_categories') }}">API: Categories</a></li>
+        <li><a href="{{ url_for('api.get_sources') }}">API: Sources</a></li>
+        <li><a href="{{ url_for('api.get_articles') }}">API: Articles</a></li>
+    </ul>
+{% endblock %}
