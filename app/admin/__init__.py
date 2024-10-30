@@ -1,3 +1,4 @@
+# app/admin/__init__.py
 from flask import Blueprint
 from flask_admin import Admin, AdminIndexView
 from flask import redirect, url_for, request
@@ -29,15 +30,12 @@ def init_admin(app, db):
     from app.models.article import Article
     from .views import CategoryView, SourceView, ArticleView
     
-    admin.add_view(CategoryView(Category, db.session, name='Categories', category='Content Management'))
-    admin.add_view(SourceView(Source, db.session, name='Sources', category='Content Management'))
-    admin.add_view(ArticleView(Article, db.session, name='Articles', category='Content Management'))
-
-    @app.context_processor
-    def inject_admin_data():
-        return dict(
-            admin_base_template='admin/master.html',
-            admin_view=admin.index_view
-        )
+    # Add views with categories
+    admin.add_view(CategoryView(Category, db.session, name='Categories', 
+                              category='Content Management'))
+    admin.add_view(SourceView(Source, db.session, name='Sources', 
+                            category='Content Management'))
+    admin.add_view(ArticleView(Article, db.session, name='Articles', 
+                             category='Content Management'))
 
 from . import routes
