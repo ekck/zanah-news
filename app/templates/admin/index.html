@@ -1,8 +1,46 @@
-{% extends 'base.html' %}
+{% extends 'admin/master.html' %}
 
-{% block title %}Admin Dashboard{% endblock %}
-
-{% block content %}
-    <h1>Welcome to the News Scraper Admin Dashboard</h1>
-    <p>Use the navigation menu to manage categories, sources, and articles.</p>
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Welcome to News Scraper Admin</h1>
+            <p class="lead">
+                Manage your news sources, categories, and articles here.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Categories</h3>
+                </div>
+                <div class="panel-body">
+                    <a href="{{ url_for('category.index_view') }}" class="btn btn-primary">Manage Categories</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Sources</h3>
+                </div>
+                <div class="panel-body">
+                    <a href="{{ url_for('source.index_view') }}" class="btn btn-primary">Manage Sources</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Articles</h3>
+                </div>
+                <div class="panel-body">
+                    <a href="{{ url_for('article.index_view') }}" class="btn btn-primary">Manage Articles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

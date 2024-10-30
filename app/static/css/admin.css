@@ -1,0 +1,17 @@
+/* static/css/admin.css */
+.panel {
+    margin-top: 20px;
+}
+
+.navbar-brand {
+    padding: 0 15px;
+}
+
+.navbar-brand img {
+    height: 50px;
+    padding: 5px;
+}
+
+.container {
+    margin-top: 20px;
+}
