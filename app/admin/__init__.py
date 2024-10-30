@@ -1,9 +1,7 @@
-from flask import Blueprint
 from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
+from flask import redirect, url_for, request
 from app.models import Category, Source, Article
-
-bp = Blueprint('admin_views', __name__)
 
 # Create custom base classes for security (optional)
 class SecureModelView(ModelView):
@@ -60,9 +58,6 @@ def init_admin(app, db):
         name='Articles',
         category='Content Management'
     ))
-    
-    # Register the blueprint
-    app.register_blueprint(bp)
 
     # Add any additional configuration
     @app.context_processor
@@ -73,5 +68,3 @@ def init_admin(app, db):
             h=admin.template_helper
         )
 
-# Import routes at the end to avoid circular imports
-from . import routes
