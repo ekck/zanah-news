@@ -1,65 +1,37 @@
+from flask import Blueprint
 from flask_admin import Admin, AdminIndexView
-from flask_admin.contrib.sqla import ModelView
 from flask import redirect, url_for, request
-from app.models import Category, Source, Article
+from flask_login import current_user
 
-# Create custom base classes for security (optional)
-class SecureModelView(ModelView):
-    def is_accessible(self):
-        # Add authentication logic here if needed
-        return True
-
-    def inaccessible_callback(self, name, **kwargs):
-        # Redirect to login page if user doesn't have access
-        return redirect(url_for('auth.login', next=request.url))
+# Change the blueprint name to be unique
+bp = Blueprint('admin_bp', __name__)  # Changed from 'admin' to 'admin_bp'
 
 class CustomAdminIndexView(AdminIndexView):
     def is_accessible(self):
-        # Add authentication logic here if needed
-        return True
+        return current_user.is_authenticated and current_user.is_admin
 
     def inaccessible_callback(self, name, **kwargs):
-        # Redirect to login page if user doesn't have access
         return redirect(url_for('auth.login', next=request.url))
 
-# Initialize admin with custom index view
 admin = Admin(
     name='News Scraper Admin', 
     template_mode='bootstrap4',
     index_view=CustomAdminIndexView(),
-    base_template='admin/master.html'
+    base_template='admin/master.html',
+    url='/admin'  # Specify the URL prefix for admin interface
 )
 
 def init_admin(app, db):
-    # Initialize the Flask-Admin extension
     admin.init_app(app)
     
-    # Import views
+    # Import models and views here to avoid circular imports
+    from app.models import Category, Source, Article
     from .views import CategoryView, SourceView, ArticleView
     
-    # Add views with categories for better organization
-    admin.add_view(CategoryView(
-        Category, 
-        db.session, 
-        name='Categories',
-        category='Content Management'
-    ))
-    
-    admin.add_view(SourceView(
-        Source, 
-        db.session, 
-        name='Sources',
-        category='Content Management'
-    ))
-    
-    admin.add_view(ArticleView(
-        Article, 
-        db.session, 
-        name='Articles',
-        category='Content Management'
-    ))
+    admin.add_view(CategoryView(Category, db.session, name='Categories', category='Content Management'))
+    admin.add_view(SourceView(Source, db.session, name='Sources', category='Content Management'))
+    admin.add_view(ArticleView(Article, db.session, name='Articles', category='Content Management'))
 
-    # Add any additional configuration
     @app.context_processor
     def inject_admin_data():
         return dict(
@@ -68,3 +40,4 @@ def init_admin(app, db):
             h=admin.template_helper
         )
 
+from . import routes

@@ -10,6 +10,7 @@ class Article(db.Model):
     content = db.Column(db.Text, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     source_id = db.Column(db.Integer, db.ForeignKey('sources.id'), nullable=False)
+    published_at = db.Column(db.DateTime, nullable=True)
     source = db.relationship('Source', backref='articles')
     is_read = db.Column(db.Boolean, default=False)  # Add this line
 
