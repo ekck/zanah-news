@@ -105,3 +105,6 @@ ValueError: not enough values to unpack (expected 4, got 3)
 2024-10-30 17:43:45,495 INFO: News Scraper startup [in /home/emmanuel/Documents/Dev/zanah-news/backend/app/__init__.py:58]
 2024-10-30 17:43:54,696 INFO: News Scraper startup [in /home/emmanuel/Documents/Dev/zanah-news/backend/app/__init__.py:58]
 2024-10-30 17:44:02,042 INFO: News Scraper startup [in /home/emmanuel/Documents/Dev/zanah-news/backend/app/__init__.py:58]
+2024-10-30 17:50:37,160 INFO: News Scraper startup [in /home/emmanuel/Documents/Dev/zanah-news/backend/app/__init__.py:60]
+2024-10-30 17:51:46,971 INFO: News Scraper startup [in /home/emmanuel/Documents/Dev/zanah-news/backend/app/__init__.py:60]
+2024-10-30 17:51:52,278 INFO: News Scraper startup [in /home/emmanuel/Documents/Dev/zanah-news/backend/app/__init__.py:60]
