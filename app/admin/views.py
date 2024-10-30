@@ -3,6 +3,9 @@ from flask_admin.contrib.sqla import ModelView
 from flask import redirect, url_for, request
 from flask_login import current_user
 from wtforms import validators
+from wtforms_sqlalchemy.fields import QuerySelectField
+from app.models.category import Category  # Ensure you import your models
+from app.models.source import Source  # Ensure you import your models
 
 class SecureModelView(ModelView):
     def is_accessible(self):
@@ -48,6 +51,17 @@ class SourceView(SecureModelView):
         'category': lambda v, c, m, p: m.category.name if m.category else ''
     }
 
+    # Override the scaffold_form method to use QuerySelectField
+    def scaffold_form(self):
+        form_class = super(SourceView, self).scaffold_form()
+        form_class.category = QuerySelectField(
+            'Category',
+            query_factory=lambda: Category.query.order_by(Category.name),
+            get_label='name',
+            allow_blank=False
+        )
+        return form_class
+
 class ArticleView(SecureModelView):
     column_list = ['id', 'title', 'url', 'published_at', 'source']
     column_searchable_list = ['title', 'url']
@@ -71,3 +85,14 @@ class ArticleView(SecureModelView):
     column_formatters = {
         'source': lambda v, c, m, p: m.source.name if m.source else ''
     }
+
+    # Override the scaffold_form method to use QuerySelectField for source
+    def scaffold_form(self):
+        form_class = super(ArticleView, self).scaffold_form()
+        form_class.source = QuerySelectField(
+            'Source',
+            query_factory=lambda: Source.query.order_by(Source.name),
+            get_label='name',
+            allow_blank=False
+        )
+        return form_class

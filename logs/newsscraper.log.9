@@ -1,0 +1,121 @@
+2024-10-30 15:46:41,361 INFO: News Scraper startup [in /home/emmanuel/Documents/Dev/zanah-news/backend/app/__init__.py:49]
+2024-10-30 15:46:47,194 INFO: News Scraper startup [in /home/emmanuel/Documents/Dev/zanah-news/backend/app/__init__.py:49]
+2024-10-30 15:47:01,772 INFO: News Scraper startup [in /home/emmanuel/Documents/Dev/zanah-news/backend/app/__init__.py:49]
+2024-10-30 15:47:22,277 INFO: News Scraper startup [in /home/emmanuel/Documents/Dev/zanah-news/backend/app/__init__.py:49]
+2024-10-30 15:47:32,110 ERROR: Exception on / [GET] [in /home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/app/main/routes.py", line 12, in index
+    return render_template('index.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/templating.py", line 127, in _render
+    app.update_template_context(context)
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py", line 493, in update_template_context
+    context.update(self.ensure_sync(func)())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/app/admin/__init__.py", line 40, in inject_admin_data
+    h=admin.template_helper
+      ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Admin' object has no attribute 'template_helper'. Did you mean: 'template_mode'?
+2024-10-30 15:48:37,337 INFO: News Scraper startup [in /home/emmanuel/Documents/Dev/zanah-news/backend/app/__init__.py:49]
+2024-10-30 15:48:49,989 ERROR: Exception on /admin/ [GET] [in /home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask_admin/base.py", line 65, in inner
+    abort = self._handle_view(f.__name__, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask_admin/base.py", line 353, in _handle_view
+    if not self.is_accessible():
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/app/admin/__init__.py", line 10, in is_accessible
+    return current_user.is_authenticated and current_user.is_admin
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/werkzeug/local.py", line 318, in __get__
+    obj = instance._get_current_object()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/werkzeug/local.py", line 526, in _get_current_object
+    return get_name(local())
+                    ^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask_login/utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask_login/utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Flask' object has no attribute 'login_manager'
+2024-10-30 15:49:41,715 ERROR: Exception on /admin/ [GET] [in /home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask_admin/base.py", line 65, in inner
+    abort = self._handle_view(f.__name__, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask_admin/base.py", line 353, in _handle_view
+    if not self.is_accessible():
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/app/admin/__init__.py", line 10, in is_accessible
+    return current_user.is_authenticated and current_user.is_admin
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/werkzeug/local.py", line 318, in __get__
+    obj = instance._get_current_object()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/werkzeug/local.py", line 526, in _get_current_object
+    return get_name(local())
+                    ^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask_login/utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask_login/utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Flask' object has no attribute 'login_manager'
+2024-10-30 15:58:26,289 INFO: News Scraper startup [in /home/emmanuel/Documents/Dev/zanah-news/backend/app/__init__.py:56]
+2024-10-30 15:59:11,808 INFO: News Scraper startup [in /home/emmanuel/Documents/Dev/zanah-news/backend/app/__init__.py:56]
+2024-10-30 15:59:23,113 INFO: News Scraper startup [in /home/emmanuel/Documents/Dev/zanah-news/backend/app/__init__.py:56]
+2024-10-30 15:59:37,280 INFO: News Scraper startup [in /home/emmanuel/Documents/Dev/zanah-news/backend/app/__init__.py:56]
+2024-10-30 16:00:43,328 INFO: News Scraper startup [in /home/emmanuel/Documents/Dev/zanah-news/backend/app/__init__.py:56]
+2024-10-30 16:06:17,679 INFO: News Scraper startup [in /home/emmanuel/Documents/Dev/zanah-news/backend/app/__init__.py:56]

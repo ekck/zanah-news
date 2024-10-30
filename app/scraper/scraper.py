@@ -1,52 +1,44 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
+from newspaper import Article as NewspaperArticle, Config
 from app.models import Source, Article
 from app import db
+import logging
+
+logger = logging.getLogger(__name__)
 
 class NewsScraper:
     def __init__(self):
-        chrome_options = Options()
-        chrome_options.add_argument("--headless")
-        chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--disable-dev-shm-usage")
-        
-        service = Service(ChromeDriverManager().install())
-        self.driver = webdriver.Chrome(service=service, options=chrome_options)
+        self.config = Config()
+        self.config.browser_user_agent = 'Mozilla/5.0'
 
     def scrape_source(self, source):
         try:
-            self.driver.get(source.url)
-            articles = self.driver.find_elements(By.CSS_SELECTOR, source.article_selector)
+            article = NewspaperArticle(source.url, config=self.config)
+            article.download()
+            article.parse()
             
-            for article in articles:
-                try:
-                    title = article.find_element(By.CSS_SELECTOR, source.title_selector).text
-                    url = article.find_element(By.CSS_SELECTOR, source.link_selector).get_attribute('href')
-                    
-                    # Check if article already exists
-                    if not Article.query.filter_by(url=url).first():
-                        new_article = Article(
-                            title=title,
-                            url=url,
-                            source_id=source.id
-                        )
-                        db.session.add(new_article)
-                except Exception as e:
-                    print(f"Error scraping article: {str(e)}")
-                    continue
+            # Create new article
+            new_article = Article(
+                title=article.title,
+                url=source.url,
+                content=article.text,
+                source_id=source.id
+            )
             
+            db.session.add(new_article)
             db.session.commit()
             
+            return True
         except Exception as e:
-            print(f"Error scraping source {source.name}: {str(e)}")
-            
+            logger.error(f"Error scraping {source.url}: {str(e)}")
+            return False
+
     def scrape_all_sources(self):
         sources = Source.query.all()
+        results = []
         for source in sources:
-            self.scrape_source(source)
-            
-    def close(self):
-        self.driver.quit()
+            success = self.scrape_source(source)
+            results.append({
+                'source': source.name,
+                'success': success
+            })
+        return results

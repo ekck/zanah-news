@@ -1,0 +1,98 @@
+2024-10-30 16:09:49,093 ERROR: Exception on /admin/article/new/ [GET] [in /home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask_admin/base.py", line 69, in inner
+    return self._run_view(f, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask_admin/base.py", line 369, in _run_view
+    return fn(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask_admin/model/base.py", line 2093, in create_view
+    form = self.create_form()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask_admin/model/base.py", line 1332, in create_form
+    return self._create_form_class(get_form_data(), obj=obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/wtforms/form.py", line 209, in __call__
+    return type.__call__(cls, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask_admin/form/__init__.py", line 22, in __init__
+    super(BaseForm, self).__init__(formdata=formdata, obj=obj, prefix=prefix, **kwargs)
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/wtforms/form.py", line 281, in __init__
+    super().__init__(self._unbound_fields, meta=meta_obj, prefix=prefix)
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/wtforms/form.py", line 49, in __init__
+    field = meta.bind_field(self, unbound_field, options)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/wtforms/meta.py", line 28, in bind_field
+    return unbound_field.bind(form=form, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/wtforms/fields/core.py", line 387, in bind
+    return self.field_class(*self.args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/wtforms/fields/core.py", line 133, in __init__
+    for k, v in flags.items():
+                ^^^^^^^^^^^
+AttributeError: 'tuple' object has no attribute 'items'
+2024-10-30 16:10:06,279 ERROR: Exception on /admin/article/new/ [GET] [in /home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py:838]
+Traceback (most recent call last):
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask_admin/base.py", line 69, in inner
+    return self._run_view(f, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask_admin/base.py", line 369, in _run_view
+    return fn(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask_admin/model/base.py", line 2093, in create_view
+    form = self.create_form()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask_admin/model/base.py", line 1332, in create_form
+    return self._create_form_class(get_form_data(), obj=obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/wtforms/form.py", line 209, in __call__
+    return type.__call__(cls, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/flask_admin/form/__init__.py", line 22, in __init__
+    super(BaseForm, self).__init__(formdata=formdata, obj=obj, prefix=prefix, **kwargs)
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/wtforms/form.py", line 281, in __init__
+    super().__init__(self._unbound_fields, meta=meta_obj, prefix=prefix)
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/wtforms/form.py", line 49, in __init__
+    field = meta.bind_field(self, unbound_field, options)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/wtforms/meta.py", line 28, in bind_field
+    return unbound_field.bind(form=form, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/wtforms/fields/core.py", line 387, in bind
+    return self.field_class(*self.args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/emmanuel/Documents/Dev/zanah-news/backend/venv/lib/python3.12/site-packages/wtforms/fields/core.py", line 133, in __init__
+    for k, v in flags.items():
+                ^^^^^^^^^^^
+AttributeError: 'tuple' object has no attribute 'items'
